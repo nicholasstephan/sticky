@@ -31,6 +31,7 @@
 
 		destroy: function() {
 			this.$parent.off('scroll.sticky');
+			this.positionStatic();
 			this.$element.removeData('sticky');
 		},
 
