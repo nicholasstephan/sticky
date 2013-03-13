@@ -57,15 +57,16 @@
 			this.$placeholder.show();
 
 			this.$element
-				.css('position', 'fixed')
+				.css('position', 'absolute')
 				.addClass('is-sticking');
 		},
 
 		stickTo: function(left, top) {
-			var parentTop = this.$parent.offset().top;
-
 			this.$element
-				.css('top', top + parentTop + "px");
+				.css({
+					"top": "0px",
+					"-webkit-transform": "translateY(" + top + "px)"
+				});
 
 			this.positionSticky();
 		},
@@ -82,10 +83,10 @@
 				if(this.stickyTop == this.staticTop)
 					this.positionStatic()
 				else
-					this.stickTo(0, this.stickyTop - scrollTop);
+					this.stickTo(0, this.stickyTop);
 			}
 			else if(scrollTop > this.staticTop)
-				this.stickTo(0, 0);
+				this.stickTo(0, scrollTop);
 			else
 				this.positionStatic();
 		},
