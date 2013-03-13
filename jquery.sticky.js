@@ -62,7 +62,7 @@
 		},
 
 		stickTo: function(left, top) {
-			var parentTop = this.$parent.position().top;
+			var parentTop = this.$parent.offset().top;
 
 			this.$element
 				.css('top', top + parentTop + "px");
